@@ -5,7 +5,7 @@ const errors = require('../middlewares/errors');
 
 
 router.get('/posts', apiController.index)
-router.get('/posts/:slug', apiController.show)
+router.get('/posts/:id', apiController.show)
 
 // Error handling middleware
 router.use(errors)

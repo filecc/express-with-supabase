@@ -13,7 +13,7 @@ async function index (req, res, next) {
 }
 
 async function show (req, res, next) {
-    const {data, error} = await supabase.from('posts').select('*').eq('slug', req.params.slug);
+    const {data, error} = await supabase.from('posts').select('*').eq('id', parseInt(req.params.id));
     if (error) {
         next(new CustomError(error.message, 'BAD_REQUEST',  669));
         return

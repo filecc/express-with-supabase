@@ -1,11 +1,12 @@
-const express = require('express');
+import express, { Express } from 'express';
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || 'localhost';
-const apiRouter = require('./routers/api');
+import apiRouter from './routers/api';
 
 
-const app = express();
+
+const app: Express = express();
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -14,6 +15,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api', apiRouter)
 
 
-app.listen(port, host, () => {
+app.listen(3000, host, () => {
     console.log(`Server running at http://${host}:${port}/`);
 });

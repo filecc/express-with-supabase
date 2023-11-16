@@ -1,5 +1,6 @@
 const supabase = require('../lib/supabase');
 const CustomError = require('../lib/CustomError');
+const dotenv = require('dotenv').config();
 
 async function index (req, res, next) {
     const {data, error} = await supabase.from('posts').select('*');
@@ -13,7 +14,7 @@ async function index (req, res, next) {
 }
 
 async function show (req, res, next) {
-    const {data, error} = await supabase.from('posts').select('*').eq('id', parseInt(req.params.id));
+    const {data, error} = await supabase.from(process.env.SUPABASE_TABLE).select('*').eq('id', parseInt(req.params.id));
     if (error) {
         next(new CustomError(error.message, 'BAD_REQUEST',  669));
         return
